@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.login{
+top: 20%;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<h1>LIVER PATIENT ANALYSIS</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('y_predict')}}"method="post">
+    	        <input type="number" name="Age" placeholder="Age" title="enter age less than 100"  min="0" max="100"required="required" />
+                <input type="number" name="Gender" placeholder="gender" title="0-female,1-male"  min="0" max="1" required="required" />		
+                <input type="number" name="TB" placeholder="Total_Bilirubin" step="0.01" min="0" max="85" required="required" />
+                <input type="number" name="AP" placeholder="Alkaline_Phosphotase"  min="0"  required="required" />
+                <input type="number" name="AM" placeholder="Aspartate_Aminotransferase" min="0" required="required" />
+                
+                <input type="number" name="Tp" placeholder="Total_proteins" step="0.01" min="0" max="10" required="required" />
+                
+                <input type="number" name="agr" placeholder="Albumin_and_Globulin_Ratio" step="0.01" min="0" max="5"required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
+
